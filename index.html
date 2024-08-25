@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StudentForm</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+
+<style>
+    body{
+        background: rgb(238,174,202);
+        background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
+    }
+    div{
+        background: rgb(238,174,202);
+        background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
+    }
+    .error-message {
+        color: red;
+        font-size: 13px;
+        
+      }  
+    button{
+        background: rgb(238,174,202);
+        background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
+        border-radius: 10px;
+        width: 80px;     
+    } 
+</style>
+
+
+<body class="p-8">
+    <div class="mx-auto max-w-80">
+        <form class="p-6 border border-black rounded-xl shadow-2xl">
+            <h2 class="p-2 text-center text-2xl font-semibold">Student Form</h2>
+            <table >
+                <tr class="p-2 ">
+                    <td class="p-2 py-8"><label for="Name">Name:</label> </td>
+                    <td class="p-2"><input type="text" class="border border-black h-8 rounded-xl" id="name"></td>
+                    <tr><td></td><td><span id="name-error" class="error-message"></span></td></tr>
+                    
+                    
+                </tr>
+                <tr class="p-2">
+                    <td class="p-2 py-8"><label for="E-mail">E-Mail:</label> </td>
+                    <td class="p-2"><input type="text" class="border border-black h-8 rounded-xl" id="email"></td>
+                    <tr><td></td><td><span id="email-error" class="error-message"></span></td></tr>
+                </tr>
+                <tr class="p-2 ">
+                    <td class="p-2 py-8"><label for="Password">Password:</label> </td>
+                    <td class="p-2"><input type="text" class="border border-black h-8 rounded-xl" id="password" id="typepass"></td>                    
+                </tr>
+                <tr>
+                    <td></td>
+                    <td class="pass"><input type="checkbox" onclick="Toggle()" >Show Password</td>
+                </tr>
+                <tr>
+                    <td></td><td><span id="password-error" class="error-message"></span></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td ><button class="ml-5 border border-black font-semibold mt-9 text-red-500 ">Submit</button></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+
+<script>   
+    var password = document.getElementById("password");
+    var passwordError = document.getElementById("password-error");
+    password.addEventListener("input", function() {
+    var regex = /^(?=.*\d)(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,}$/;
+     if (password.value.match(regex)) {
+        passwordError.textContent = "";
+        passwordError.style.display = "none";
+    }
+     else {
+        passwordError.textContent = "Password must be at least 8 characters long and contain at least one number and one special character";
+        passwordError.style.display = "block";
+    }
+    }); 
+    
+    var email = document.getElementById("email");
+    var emailerror = document.getElementById("email-error");
+    email.addEventListener("input", function() {
+    var regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+     if (email.value.match(regex)) {
+        emailerror.textContent = "";
+        emailerror.style.display = "none";
+    }
+     else {
+        emailerror.textContent = "Eg:abcd@gmail.com";
+        emailerror.style.display = "block";
+    }
+    }); 
+    function Toggle() {
+        let temp = document.getElementById("password");
+         
+        if (temp.type === "password") {
+            temp.type = "text";
+        }
+        else {
+            temp.type = "password";
+        }
+    }
+</script> 
+</body>
+</html>   
+
+
+
+
+
